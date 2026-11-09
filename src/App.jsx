@@ -51,11 +51,25 @@ function App() {
   const [priority, setPriority] = useState('Medium')
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('all')
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      return localStorage.getItem('react-training-dark-mode') === 'true'
+    } catch {
+      return false
+    }
+  })
 
   useEffect(() => {
     localStorage.setItem('react-training-tasks', JSON.stringify(tasks))
   }, [tasks])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('react-training-dark-mode', String(darkMode))
+    } catch {
+      // Keep theme switching functional when storage is unavailable.
+    }
+  }, [darkMode])
 
   useEffect(() => {
     document.title = 'React Training Dashboard'
