@@ -1,16 +1,59 @@
-# React + Vite
+# React Training Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A responsive task management dashboard built with **React** and **Vite**. This project demonstrates React components, state management, effects, controlled forms, filtering, and browser-based persistence.
 
-Currently, two official plugins are available:
+**[Live demo](https://givi588.github.io/react-training-dashboard/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Add tasks with Low, Medium, or High priority
+- Mark tasks complete or active
+- Delete tasks
+- Search tasks by title
+- Filter all, active, or completed tasks
+- View total, completed, and remaining task counts
+- Switch between light and dark mode
+- Save tasks locally in the browser using `localStorage`
+- Responsive layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the Oxlint configuration
+- React
+- JavaScript (JSX)
+- CSS
+- Vite
+- GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Run locally
+
+Requirements: Node.js and npm.
+
+```bash
+git clone https://github.com/givi588/react-training-dashboard.git
+cd react-training-dashboard
+npm install
+npm run dev
+```
+
+Open the local URL shown in the terminal.
+
+## Build and lint
+
+```bash
+npm run build
+npm run lint
+```
+
+The production build is generated in `dist/`.
+
+## Data storage
+
+Tasks are stored in the browser's `localStorage` under `react-training-tasks`. They remain on the same browser/device after a refresh, but do not sync between devices. Clearing site storage removes the saved tasks.
+
+## Project status
+
+The dashboard is published as a learning and portfolio project. It does not have accounts, a backend, or cloud synchronization.
+
+## Author
+
+[GitHub: givi588](https://github.com/givi588)
