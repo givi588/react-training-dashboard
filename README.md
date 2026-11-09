@@ -12,9 +12,11 @@ A responsive task management dashboard built with **React** and **Vite**. This p
 - Search tasks by title
 - Filter all, active, or completed tasks
 - View total, completed, and remaining task counts
-- Switch between light and dark mode
+- Switch between light and dark mode, with theme preference saved locally
 - Save tasks locally in the browser using `localStorage`
 - Responsive layout
+- Seven automated unit tests for task logic
+- GitHub Actions checks for lint, tests, and production build
 
 ## Tech stack
 
@@ -37,12 +39,15 @@ npm run dev
 
 Open the local URL shown in the terminal.
 
-## Build and lint
+## Quality checks
 
 ```bash
 npm run build
 npm run lint
+node --test
 ```
+
+GitHub Actions runs these checks automatically for pull requests and pushes to `main`. Unit tests cover task creation and validation, completion toggles, deletion, searching, and status filters. These are logic-level tests; browser end-to-end testing is not included.
 
 The production build is generated in `dist/`.
 
@@ -50,9 +55,13 @@ The production build is generated in `dist/`.
 
 Tasks are stored in the browser's `localStorage` under `react-training-tasks`. They remain on the same browser/device after a refresh, but do not sync between devices. Clearing site storage removes the saved tasks.
 
+## Deployment
+
+The live demo is hosted on GitHub Pages. The Vite base path is configured for `/react-training-dashboard/`. The repository does not currently automate GitHub Pages deployment; publishing a new live version requires a separate deployment step.
+
 ## Project status
 
-The dashboard is published as a learning and portfolio project. It does not have accounts, a backend, or cloud synchronization.
+Portfolio v1.0: the dashboard is published as a learning and portfolio project. It does not have accounts, a backend, or cloud synchronization.
 
 ## Author
 
