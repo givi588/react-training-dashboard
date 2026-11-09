@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { createTask, toggleTask as toggleTaskItem, deleteTask as deleteTaskItem, filterTasks } from './taskUtils.js'
 
 const initialTasks = [
   { id: 1, title: 'Learn React Components', done: true, priority: 'High' },
@@ -77,45 +78,22 @@ function App() {
 
   function addTask(event) {
     event.preventDefault()
-    const cleanTitle = title.trim()
-
-    if (!cleanTitle) return
-
-    const newTask = {
-      id: crypto.randomUUID(),
-      title: cleanTitle,
-      done: false,
-      priority,
-    }
+    const newTask = createTask(title, priority, crypto.randomUUID())
+    if (!newTask) return
 
     setTasks(previous => [...previous, newTask])
     setTitle('')
   }
 
   function toggleTask(id) {
-    setTasks(previous =>
-      previous.map(task =>
-        task.id === id ? { ...task, done: !task.done } : task
-      )
-    )
+    setTasks(previous => toggleTaskItem(previous, id))
   }
 
   function deleteTask(id) {
-    setTasks(previous => previous.filter(task => task.id !== id))
+    setTasks(previous => deleteTaskItem(previous, id))
   }
 
-  const visibleTasks = tasks.filter(task => {
-    const matchesSearch = task.title
-      .toLowerCase()
-      .includes(search.toLowerCase())
-
-    const matchesFilter =
-      filter === 'all' ||
-      (filter === 'completed' && task.done) ||
-      (filter === 'active' && !task.done)
-
-    return matchesSearch && matchesFilter
-  })
+  const visibleTasks = filterTasks(tasks, search, filter)
 
   return (
     <div className={`app ${darkMode ? 'dark' : ''}`}>
