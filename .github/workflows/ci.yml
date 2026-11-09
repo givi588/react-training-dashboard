@@ -31,5 +31,8 @@ jobs:
       - name: Lint source
         run: npm run lint
 
+      - name: Run unit tests
+        run: node --test
+
       - name: Build production bundle
         run: npm run build
